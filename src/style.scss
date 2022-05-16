@@ -15,6 +15,11 @@ $globalPadding: 1.5rem;
 		font-size: $headingFontSize;
 	}
 
+	&__country-code {
+		text-decoration-line: underline;
+		text-decoration-style: dotted;
+	}
+
 	&__related-posts {
 		background-color: $relatedPostBackgroundColor;
 		border-top: $globalBorderlStyle;
@@ -70,7 +75,19 @@ $globalPadding: 1.5rem;
 	}
 
 	.title,
-	.excerpt {
+	.excerpt,
+	.excerpt p {
 		margin: 0;
+	}
+
+	.title {
+		font-size: $relatedPostHeaderFontSize;
+	}
+
+	.excerpt p {
+		display: -webkit-box;
+  		-webkit-box-orient: vertical;
+  		-webkit-line-clamp: 1;
+		overflow: hidden;
 	}
 }
