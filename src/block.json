@@ -39,7 +39,7 @@
 				"excerpt": {
 					"type": "string",
 					"selector": ".excerpt",
-					"source": "text"
+					"source": "html"
 				},
 				"link": {
 					"type": "string",
