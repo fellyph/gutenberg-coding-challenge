@@ -1,18 +1,51 @@
-.xwp-country-card {
-	border: 1px solid #dcdcde;
-	box-shadow: 0px 1px 1px rgba(#000, 0.05);
+$globalBorderlStyle: 1px solid #dcdcde;
+$cardHeaderFontSize: 2rem;
+$relatedPostHeaderFontSize: 1.5rem;
+$relatedPostBackgroundColor: #fafafc;
+$headingFontSize: 2rem;
+$globalPadding: 1.5rem;
 
-	.xwp-country-card__media {
+.xwp-country-card {
+	border: $globalBorderlStyle;
+	box-shadow: 0 1px 1px rgba(#000, 0.05);
+
+	&__heading {
+		padding: $globalPadding;
+		margin: 0;
+		font-size: $headingFontSize;
+	}
+
+	&__country-code {
+		text-decoration-line: underline;
+		text-decoration-style: dotted;
+	}
+
+	&__related-posts {
+		background-color: $relatedPostBackgroundColor;
+		border-top: $globalBorderlStyle;
+		padding: $globalPadding;
+
+		&__heading {
+			margin: 0;
+			font-size: $relatedPostHeaderFontSize;
+		}
+	}
+
+	&__related-posts-list {
+		padding-left: $globalPadding;
+	}
+
+	& &__media {
 		align-items: center;
-		border-bottom: 1px solid #dcdcde;
+		border-bottom: $globalBorderlStyle;
 		display: flex;
 		height: calc(200px + 5vw);
 		justify-content: center;
 		overflow: hidden;
 		position: relative;
-		margin: 0px;
+		margin: 0;
 
-		&:before {
+		&::before {
 			align-items: center;
 			content: attr(data-emoji-flag);
 			display: flex;
@@ -20,10 +53,10 @@
 			font-size: calc(800px + 3vh);
 			height: 100%;
 			justify-content: center;
-			left: 0px;
+			left: 0;
 			pointer-events: none;
 			position: absolute;
-			top: 0px;
+			top: 0;
 			width: 100%;
 		}
 	}
@@ -34,36 +67,27 @@
 	line-height: 1;
 }
 
-.xwp-country-card__heading {
-	padding: 1.5rem;
-	margin: 0;
-	font-size: 2rem;
-}
+.related-post {
 
-.xwp-country-card__related-posts {
-	border-top: 1px solid #dcdcde;
-	background-color: #fafafc;
-	padding: 1.5rem;
-}
+	.title,
+	+ .related-post {
+		margin-top: 1.5rem;
+	}
 
-.xwp-country-card__related-posts__heading {
-	margin: 0px;
-	font-size: 1.5rem;
-}
+	.title,
+	.excerpt,
+	.excerpt p {
+		margin: 0;
+	}
 
-.xwp-country-card__related-posts-list {
-	padding-left: 1.5rem;
-}
+	.title {
+		font-size: $relatedPostHeaderFontSize;
+	}
 
-.related-post + .related-post {
-	margin-top: 1.5rem;
-}
-
-.related-post .title {
-	margin: 0px;
-	font-size: 1.5rem;
-}
-
-.related-post .excerpt {
-	margin: 0px;
+	.excerpt p {
+		display: -webkit-box;
+  		-webkit-box-orient: vertical;
+  		-webkit-line-clamp: 1;
+		overflow: hidden;
+	}
 }

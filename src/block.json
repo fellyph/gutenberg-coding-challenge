@@ -16,6 +16,16 @@
 			"source": "html",
 			"selector": ".xwp-country-card__country-code"
 		},
+		"countryName": {
+			"type": "string",
+			"source": "html",
+			"selector": ".xwp-country-card__country-name"
+		},
+		"continentName": {
+			"type": "string",
+			"source": "html",
+			"selector": ".xwp-country-card__continent-name"
+		},
 		"relatedPosts": {
 			"type": "array",
 			"source": "query",
@@ -29,7 +39,7 @@
 				"excerpt": {
 					"type": "string",
 					"selector": ".excerpt",
-					"source": "text"
+					"source": "html"
 				},
 				"link": {
 					"type": "string",

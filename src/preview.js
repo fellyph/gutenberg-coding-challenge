@@ -1,52 +1,73 @@
-import countries from '../assets/countries.json';
-import continentNames from '../assets/continent-names.json';
-import continents from '../assets/continents.json';
-import { getEmojiFlag } from './utils';
-import { __, sprintf } from '@wordpress/i18n';
+/**
+ * WordPress dependencies
+ */
+import { __, _n } from '@wordpress/i18n';
 
-export default function Preview( { countryCode, relatedPosts } ) {
+/**
+ * Internal dependencies
+ */
+import { getEmojiFlag } from './utils';
+import { RelatedPost } from './components/relatedPost';
+
+export default function Preview( {
+	countryCode,
+	countryName,
+	continentName,
+	relatedPosts,
+} ) {
 	if ( ! countryCode ) return null;
 
 	const emojiFlag = getEmojiFlag( countryCode ),
-	      hasRelatedPosts = relatedPosts?.length > 0;
+		hasRelatedPosts = relatedPosts?.length > 0;
 
 	return (
 		<div className="xwp-country-card">
-			<div className="xwp-country-card__media" data-emoji-flag={ emojiFlag }>
-				<div className="xwp-country-card-flag">
-					{ emojiFlag }
-				</div>
+			<div
+				className="xwp-country-card__media"
+				data-emoji-flag={ emojiFlag }
+			>
+				<div className="xwp-country-card-flag">{ emojiFlag }</div>
 			</div>
 			<h3 className="xwp-country-card__heading">
-				{ __( 'Hello from' ) }
-				{ ' ' }
-				<strong>{ countries[countryCode] }</strong>
-				{ ' ' }
-				(<span className="xwp-country-card__country-code">{ countryCode }</span>),
-				{ ' ' }
-				{ continentNames[continents[countryCode]] }!
+				{ __( 'Hello from', 'xwp-country-card' ) }{ ' ' }
+				<strong className="xwp-country-card__country-name">
+					{ countryName }
+				</strong>
+				(
+				<span className="xwp-country-card__country-code">
+					{ countryCode }
+				</span>
+				),{ ' ' }
+				<span className="xwp-country-card__continent-name">
+					{ continentName }
+				</span>
+				!
 			</h3>
 			<div className="xwp-country-card__related-posts">
 				<h3 className="xwp-country-card__related-posts__heading">
-					{ hasRelatedPosts ? sprintf( __( 'There are %d related posts:' ), relatedPosts.length ) : __( 'There are no related posts.' ) }
+					{ hasRelatedPosts
+						? // translators: %d: related posts total number
+						  _n(
+								'There is %d related post:',
+								'There are %d related posts:',
+								relatedPosts.length,
+								'xwp-country-card'
+						  )
+						: __(
+								'There are no related posts.',
+								'xwp-country-card'
+						  ) }
 				</h3>
 				{ hasRelatedPosts && (
 					<ul className="xwp-country-card__related-posts-list">
 						{ relatedPosts.map( ( relatedPost, index ) => (
-							<li key={ index } className="related-post">
-									<a
-										className="link"
-										href={ relatedPost.link }
-										data-post-id={ relatedPost.id }
-									>
-										<h3 className="title">
-											{ relatedPost.title }
-										</h3>
-										<p className="excerpt">
-											{ relatedPost.excerpt }
-										</p>
-									</a>
-							</li>
+							<RelatedPost
+								key={ index }
+								postId={ relatedPost.id }
+								postLink={ relatedPost.link }
+								postTitle={ relatedPost.title }
+								postExcerpt={ relatedPost.excerpt }
+							/>
 						) ) }
 					</ul>
 				) }
