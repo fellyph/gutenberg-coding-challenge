@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { __, sprintf } from '@wordpress/i18n';
+import { __, _n } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -46,13 +46,12 @@ export default function Preview( {
 			<div className="xwp-country-card__related-posts">
 				<h3 className="xwp-country-card__related-posts__heading">
 					{ hasRelatedPosts
-						? sprintf(
-								// translators: %d: related posts total number
-								__(
-									'There are %d related posts:',
-									'xwp-country-card'
-								),
-								relatedPosts.length
+						? // translators: %d: related posts total number
+						  _n(
+								'There is %d related post:',
+								'There are %d related posts:',
+								relatedPosts.length,
+								'xwp-country-card'
 						  )
 						: __(
 								'There are no related posts.',
