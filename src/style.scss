@@ -6,7 +6,7 @@ $headingFontSize: 2rem;
 $globalPadding: 1.5rem;
 
 .xwp-country-card {
-	border: $borderGlobalStyle;
+	border: $globalBorderlStyle;
 	box-shadow: 0 1px 1px rgba(#000, 0.05);
 
 	&__heading {
@@ -17,7 +17,7 @@ $globalPadding: 1.5rem;
 
 	&__related-posts {
 		background-color: $relatedPostBackgroundColor;
-		border-top: $borderGlobalStyle;
+		border-top: $globalBorderlStyle;
 		padding: $globalPadding;
 
 		&__heading {
@@ -32,7 +32,7 @@ $globalPadding: 1.5rem;
 
 	& &__media {
 		align-items: center;
-		border-bottom: $borderGlobalStyle;
+		border-bottom: $globalBorderlStyle;
 		display: flex;
 		height: calc(200px + 5vw);
 		justify-content: center;
