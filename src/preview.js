@@ -7,6 +7,7 @@ import { __, sprintf } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { getEmojiFlag } from './utils';
+import { RelatedPost } from './components/relatedPost';
 
 export default function Preview( {
 	countryCode,
@@ -55,19 +56,13 @@ export default function Preview( {
 					<ul className="xwp-country-card__related-posts-list">
 						{ relatedPosts.map( ( relatedPost, index ) => (
 							<li key={ index } className="related-post">
-								<a
-									className="link"
-									href={ relatedPost.link }
-									alt={ relatedPost.title }
-									data-post-id={ relatedPost.id }
-								>
-									<h3 className="title">
-										{ relatedPost.title }
-									</h3>
-									<p className="excerpt">
-										{ relatedPost.excerpt }
-									</p>
-								</a>
+								<RelatedPost
+									key={ index }
+									postLink={ relatedPost.link }
+									postId={ relatedPost.id }
+									postTitle={ relatedPost.title }
+									postExcerpt={ relatedPost.excerpt }
+								/>
 							</li>
 						) ) }
 					</ul>
