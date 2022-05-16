@@ -23,7 +23,12 @@ import { getEmojiFlag } from './utils';
 import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { countryCode, relatedPosts } = attributes;
+	const {
+		countryCode,
+		countryName,
+		continentName,
+		relatedPosts,
+	} = attributes;
 	const options = Object.keys( countries ).map( ( code ) => ( {
 		value: code,
 		label: `${ getEmojiFlag( code ) } ${ countries[ code ] } —  ${ code }`,
@@ -42,6 +47,8 @@ export default function Edit( { attributes, setAttributes } ) {
 		if ( newCountryCode && countryCode !== newCountryCode ) {
 			setAttributes( {
 				countryCode: newCountryCode,
+				countryName: countries[ newCountryCode ],
+				continentName: continentNames[ continents[ newCountryCode ] ],
 				relatedPosts: [],
 			} );
 		}
@@ -89,10 +96,8 @@ export default function Edit( { attributes, setAttributes } ) {
 					<Preview
 						countryCode={ countryCode }
 						relatedPosts={ relatedPosts }
-						countryName={ countries[ countryCode ] }
-						continentsName={
-							continentNames[ continents[ countryCode ] ]
-						}
+						countryName={ countryName }
+						continentName={ continentName }
 					/>
 				) : (
 					<Placeholder
