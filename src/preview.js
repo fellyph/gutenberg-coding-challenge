@@ -12,7 +12,7 @@ import { RelatedPost } from './components/relatedPost';
 export default function Preview( {
 	countryCode,
 	countryName,
-	continentsName,
+	continentName,
 	relatedPosts,
 } ) {
 	if ( ! countryCode ) return null;
@@ -30,11 +30,18 @@ export default function Preview( {
 			</div>
 			<h3 className="xwp-country-card__heading">
 				{ __( 'Hello from', 'xwp-country-card' ) }{ ' ' }
-				<strong> { countryName } </strong> (
+				<strong className="xwp-country-card__country-name">
+					{ countryName }
+				</strong>
+				(
 				<span className="xwp-country-card__country-code">
 					{ countryCode }
 				</span>
-				), { continentsName }!
+				),{ ' ' }
+				<span className="xwp-country-card__continent-name">
+					{ continentName }
+				</span>
+				!
 			</h3>
 			<div className="xwp-country-card__related-posts">
 				<h3 className="xwp-country-card__related-posts__heading">
@@ -55,14 +62,13 @@ export default function Preview( {
 				{ hasRelatedPosts && (
 					<ul className="xwp-country-card__related-posts-list">
 						{ relatedPosts.map( ( relatedPost, index ) => (
-							<li key={ index } className="related-post">
-								<RelatedPost
-									postLink={ relatedPost.link }
-									postId={ relatedPost.id }
-									postTitle={ relatedPost.title }
-									postExcerpt={ relatedPost.excerpt }
-								/>
-							</li>
+							<RelatedPost
+								key={ index }
+								postId={ relatedPost.id }
+								postLink={ relatedPost.link }
+								postTitle={ relatedPost.title }
+								postExcerpt={ relatedPost.excerpt }
+							/>
 						) ) }
 					</ul>
 				) }
