@@ -57,7 +57,6 @@ export default function Preview( {
 						{ relatedPosts.map( ( relatedPost, index ) => (
 							<li key={ index } className="related-post">
 								<RelatedPost
-									key={ index }
 									postLink={ relatedPost.link }
 									postId={ relatedPost.id }
 									postTitle={ relatedPost.title }
