@@ -55,15 +55,14 @@
 	line-height: 1;
 }
 
-.related-post + .related-post {
-	margin-top: 1.5rem;
-}
+.related-post {
+	.title,
+	& + .related-post {
+		margin-top: 1.5rem;
+	}
 
-.related-post .title {
-	margin:0;
-	font-size: 1.5rem;
-}
-
-.related-post .excerpt {
-	margin:0;
+	.title,
+	.excerpt {
+		margin:0;
+	}
 }
