@@ -58,7 +58,7 @@ export default function Edit( { attributes, setAttributes } ) {
 		async function getRelatedPosts() {
 			const postId = window.location.href.match( /post=([\d]+)/ )[ 1 ];
 			const response = await window.fetch(
-				`/wp-json/wp/v2/posts?search=${ countries[ countryCode ] }&exclude=${ postId }`
+				`/?rest_route=/wp/v2/posts/&search=${ countries[ countryCode ] }&exclude=${ postId }`
 			);
 
 			if ( ! response.ok )
