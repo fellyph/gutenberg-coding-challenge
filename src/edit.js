@@ -1,5 +1,6 @@
-import countries from '../assets/countries.json';
-import './editor.scss';
+/**
+ * WordPress dependencies
+ */
 import { edit, globe } from '@wordpress/icons';
 import { BlockControls } from '@wordpress/block-editor';
 import {
@@ -8,10 +9,16 @@ import {
 	ToolbarButton,
 	ToolbarGroup,
 } from '@wordpress/components';
-import { getEmojiFlag } from './utils';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+/**
+ * Internal dependencies
+ */
+import countries from '../assets/countries.json';
 import Preview from './preview';
+import { getEmojiFlag } from './utils';
+import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { countryCode, relatedPosts } = attributes;
