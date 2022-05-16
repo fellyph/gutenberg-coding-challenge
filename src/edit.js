@@ -16,6 +16,8 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import countries from '../assets/countries.json';
+import continentNames from '../assets/continent-names.json';
+import continents from '../assets/continents.json';
 import Preview from './preview';
 import { getEmojiFlag } from './utils';
 import './editor.scss';
@@ -24,7 +26,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { countryCode, relatedPosts } = attributes;
 	const options = Object.keys( countries ).map( ( code ) => ( {
 		value: code,
-		label: getEmojiFlag( code ) + '  ' + countries[ code ] + ' — ' + code,
+		label: `${ getEmojiFlag( code ) } ${ countries[ code ] } —  ${ code }`,
 	} ) );
 
 	const [ isPreview, setPreview ] = useState();
@@ -87,6 +89,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					<Preview
 						countryCode={ countryCode }
 						relatedPosts={ relatedPosts }
+						countryName={ countries[ countryCode ] }
+						continentsName={
+							continentNames[ continents[ countryCode ] ]
+						}
 					/>
 				) : (
 					<Placeholder
